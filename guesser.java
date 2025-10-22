@@ -6,12 +6,12 @@ public class Guesser {
 
     public Guesser() {
         input = new Scanner(System.in);
-    }
+    }//End public Guesser
 
     public static void main(String[] args) {
         Guesser game = new Guesser();
         game.run();
-    }
+    }//End public static void main String args
 
     public void run() {
         int choice;
@@ -24,33 +24,36 @@ public class Guesser {
             System.out.println("2) Computer Guesser");
             System.out.print("Please enter 0-2: ");
 
-            // Validate input
             while (!input.hasNextInt()) {
                 System.out.print("Invalid input. Please enter 0, 1, or 2: ");
                 input.next();
-            }
+            }//End while
+
             choice = input.nextInt();
-            input.nextLine(); // clear buffer
+            input.nextLine();
 
             switch (choice) {
+
                 case 1:
                     humanGuesser();
                     break;
+
                 case 2:
                     computerGuesser();
                     break;
+
                 case 0:
                     System.out.println("Thanks for playing!");
                     break;
+
                 default:
                     System.out.println("Invalid choice. Please try again.");
-            }
-        } while (choice != 0);
-    }
+            }//End switch
 
-    // -------------------------------
-    // HUMAN GUESSES THE NUMBER
-    // -------------------------------
+        } while (choice != 0); //End do
+
+    }//End public void run
+
     private void humanGuesser() {
         Random rand = new Random();
         int target = rand.nextInt(100) + 1;
@@ -64,7 +67,7 @@ public class Guesser {
             while (!input.hasNextInt()) {
                 System.out.print("That's not a number. Try again: ");
                 input.next();
-            }
+            }//End while
 
             guess = input.nextInt();
             input.nextLine(); // clear buffer
@@ -72,19 +75,20 @@ public class Guesser {
 
             if (guess < target) {
                 System.out.println("too low...");
+
             } else if (guess > target) {
                 System.out.println("too high...");
+
             } else {
                 System.out.println("got it!");
                 System.out.println("Very good! You took " + attempts + " attempts.");
                 break;
-            }
-        }
-    }
+            }//End if else if else
 
-    // -------------------------------
-    // COMPUTER GUESSES THE NUMBER
-    // -------------------------------
+        }//End while
+
+    }//End priavte void humanGuesser
+
     private void computerGuesser() {
         System.out.println("\nComputer Guesser Mode!");
         System.out.println("Think of a number between 1 and 100...");
@@ -103,20 +107,26 @@ public class Guesser {
 
             if (response.equals("h")) {
                 high = guess - 1;
+
             } else if (response.equals("l")) {
                 low = guess + 1;
+
             } else if (response.equals("c")) {
                 System.out.println("Yay! I guessed your number in " + attempts + " tries!");
                 break;
+
             } else {
                 System.out.println("Please enter only H, L, or C.");
-            }
+            }//End if else else if
 
             if (low > high) {
                 System.out.println("Hmm... something went wrong. Did you change your number?");
                 break;
-            }
-        }
-    }
-}
+            }//End if
+
+        }//End while
+
+    }//End private void computerGuesser
+
+}//End public class Guesser
 
