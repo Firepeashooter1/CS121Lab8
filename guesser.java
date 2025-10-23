@@ -70,7 +70,7 @@ public class Guesser {
             }//End while
 
             guess = input.nextInt();
-            input.nextLine(); // clear buffer
+            input.nextLine();
             attempts++;
 
             if (guess < target) {
